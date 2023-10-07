@@ -10,6 +10,7 @@ import { CreateGoogleUserDto } from './dto/create-google-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { UpdateCountDto } from '@/auth/dto/update-count.dto';
 
 export const DELETION_TIME = 30 * 60 * 1000; // 30 minutes
 
@@ -77,6 +78,7 @@ export class UsersService {
     const updatedUser = {
       ...user,
       ...updateUserDto,
+      
     };
 
     await this.userRepository.save(updatedUser);
@@ -84,6 +86,20 @@ export class UsersService {
     return updatedUser;
   }
 
+
+
+
+  // async updatec(id: number, updateCountDto: UpdateCountDto) {
+  //   const user = await this.findById(id);
+  //   const updatedUser = {
+  //     ...user,
+  //     ...updateCountDto,
+  //   };
+
+  //   await this.userRepository.save(updatedUser);
+
+  //   return updatedUser;
+  // }
   async remove(id: number): Promise<void> {
     await this.userRepository.delete(id);
   }

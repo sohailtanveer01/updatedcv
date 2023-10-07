@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class UpdateProfileDto {
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  name: string;
+  count: number;
 }

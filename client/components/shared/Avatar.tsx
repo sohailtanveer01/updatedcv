@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
+import { UserButton } from "@clerk/nextjs";
 
 import { logout } from '@/store/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -50,26 +51,8 @@ const Avatar: React.FC<Props> = ({ size = 64, interactive = true }) => {
 
   return (
     <>
-      <IconButton onClick={handleOpen} disabled={!interactive}>
-        <Image
-          width={size}
-          height={size}
-          className={styles.avatar}
-          src={getGravatarUrl(email, size)}
-          alt={user?.name ?? 'User Avatar'}
-        />
-      </IconButton>
-
-      <Menu anchorEl={anchorEl} onClose={handleClose} open={Boolean(anchorEl)}>
-        <MenuItem onClick={handleOpenProfile}>
-          <div>
-            <span className="text-xs opacity-50">{t('common.avatar.menu.greeting')},</span>
-            <p>{user?.name}</p>
-          </div>
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleLogout}>{t('common.avatar.menu.logout')}</MenuItem>
-      </Menu>
+  
+        <UserButton afterSignOutUrl="/" />
     </>
   );
 };

@@ -6,3 +6,4 @@ export * from './metadata';
 export * from './resume';
 export * from './section';
 export * from './user';
+export * from './stripe'

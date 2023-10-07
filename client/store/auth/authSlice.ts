@@ -24,10 +24,25 @@ export const authSlice = createSlice({
       state.accessToken = action.payload;
       state.isLoggedIn = true;
     },
+    setCount: (state, action:PayloadAction<number>) => {
+      if (state.user) {
+        state.user.count = action.payload
+        console.log(state.user.count)
+      }
+    },
+    setSubscriber:(state,action:PayloadAction<boolean>)=>{
+      if(state.user){
+        state.user.isSubscriber = action.payload
+        console.log("im in setsubscriber")
+
+      }else{
+        console.log("suer is null, im in setsubscriber")
+      }
+    },
     logout: () => initialState,
   },
 });
 
-export const { setUser, setAccessToken, logout } = authSlice.actions;
+export const { setUser, setAccessToken, logout, setCount, setSubscriber } = authSlice.actions;
 
 export default authSlice.reducer;

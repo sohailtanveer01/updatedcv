@@ -21,6 +21,12 @@ export class User {
   @Exclude()
   password?: string;
 
+  @Column({nullable: true})
+  count:number;
+  
+  @Column({ default: false }) // Add this line to set a default value of false
+  isSubscriber: boolean;
+  
   @Column({ nullable: true })
   @Exclude()
   resetToken?: string;
@@ -33,6 +39,7 @@ export class User {
 
   @CreateDateColumn()
   createdAt: Date;
+  
 
   @UpdateDateColumn()
   updatedAt: Date;

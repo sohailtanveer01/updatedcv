@@ -30,6 +30,7 @@ const initialState: Record<ModalName, ModalState> = {
   'dashboard.import-external': { open: false },
   'dashboard.rename-resume': { open: false },
   'builder.sections.profile': { open: false },
+  'builder.sections.description': {open:false},
   'builder.sections.work': { open: false },
   'builder.sections.education': { open: false },
   'builder.sections.awards': { open: false },

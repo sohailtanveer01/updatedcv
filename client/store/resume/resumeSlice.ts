@@ -10,6 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { getSectionsByType } from '@/config/sections';
 
 type SetResumeStatePayload = { path: string; value: unknown };
+type SetSummaryStatePayload = { path: string; value: unknown };
+
 
 type AddItemPayload = { path: string; value: ListItem };
 
@@ -36,6 +38,11 @@ export const resumeSlice = createSlice({
       const { path, value } = action.payload;
 
       set(state, path, value);
+    },
+    setSummaryState: (state:Resume, action: PayloadAction<string>) => {
+      state.basics.summary = action.payload;
+      
+      
     },
     addItem: (state: Resume, action: PayloadAction<AddItemPayload>) => {
       const { path, value } = action.payload;
@@ -125,6 +132,7 @@ export const resumeSlice = createSlice({
 export const {
   setResume,
   setResumeState,
+  setSummaryState,
   addItem,
   editItem,
   duplicateItem,

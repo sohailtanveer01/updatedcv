@@ -21,7 +21,7 @@ const HeroSection = () => (
         </div>
 
         <p className="prose prose-base prose-zinc mt-6 text-lg leading-8 dark:prose-invert">
-          Reactive Resume is a free and open-source resume builder that simplifies the tasks of creating, updating, and
+          UpdateCV.ai is a free and open-source resume builder that simplifies the tasks of creating, updating, and
           sharing your resume.
         </p>
 

@@ -5,6 +5,7 @@ import '@fontsource/ibm-plex-sans/400.css';
 import '@fontsource/ibm-plex-sans/500.css';
 import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/ibm-plex-sans/700.css';
+import { ClerkProvider } from "@clerk/nextjs";
 
 import env from '@beam-australia/react-env';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -27,40 +28,41 @@ import WrapperRegistry from '@/wrappers/index';
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
     <Head>
-      <title>Reactive Resume | A free and open source resume builder</title>
+      <title>Update CV | A free and open source resume builder</title>
 
       <meta
         name="description"
-        content="Reactive Resume is a free and open source resume builder that's built to make the mundane tasks of creating, updating and sharing your resume as easy as 1, 2, 3."
+        content="Update CV is a free and open source resume builder that's built to make the mundane tasks of creating, updating and sharing your resume as easy as 1, 2, 3."
       />
       <link rel="icon" href="/favicon.ico" />
       <meta name="viewport" content="initial-scale=1, width=device-width" />
     </Head>
+    <ClerkProvider {...pageProps}>
+      <ReduxProvider store={store}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <PersistGate loading={null} persistor={persistor}>
+            <GoogleOAuthProvider clientId={env('GOOGLE_CLIENT_ID')}>
+              <QueryClientProvider client={queryClient}>
+                <WrapperRegistry>
+                  <Loading />
 
-    <ReduxProvider store={store}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <PersistGate loading={null} persistor={persistor}>
-          <GoogleOAuthProvider clientId={env('GOOGLE_CLIENT_ID')}>
-            <QueryClientProvider client={queryClient}>
-              <WrapperRegistry>
-                <Loading />
+                  <Component {...pageProps} />
 
-                <Component {...pageProps} />
-
-                <ModalWrapper />
-                <Toaster
-                  position="bottom-right"
-                  toastOptions={{
-                    duration: 4000,
-                    className: 'toast',
-                  }}
-                />
-              </WrapperRegistry>
-            </QueryClientProvider>
-          </GoogleOAuthProvider>
-        </PersistGate>
-      </LocalizationProvider>
-    </ReduxProvider>
+                  <ModalWrapper />
+                  <Toaster
+                    position="bottom-right"
+                    toastOptions={{
+                      duration: 4000,
+                      className: 'toast',
+                    }}
+                  />
+                </WrapperRegistry>
+              </QueryClientProvider>
+            </GoogleOAuthProvider>
+          </PersistGate>
+        </LocalizationProvider>
+      </ReduxProvider>
+    </ClerkProvider>
   </>
 );
 

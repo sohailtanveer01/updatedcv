@@ -63,10 +63,10 @@ const UserProfileModal = () => {
     dispatch(setModalState({ modal: 'auth.profile', state: { open: false } }));
   };
 
-  const handleUpdate = handleSubmit(async (data) => {
-    handleClose();
-    await updateProfileMutation({ name: data.name });
-  });
+  // const handleUpdate = handleSubmit(async (data) => {
+  //   handleClose();
+  //   await updateProfileMutation({ name: data.name });
+  // });
 
   const handleDelete = async () => {
     await deleteAccountMutation();
@@ -123,7 +123,7 @@ const UserProfileModal = () => {
           />
 
           <div>
-            <Button onClick={handleUpdate}>{t('modals.auth.profile.actions.save')}</Button>
+            {/* <Button onClick={handleUpdate}>{t('modals.auth.profile.actions.save')}</Button> */}
           </div>
         </form>
 

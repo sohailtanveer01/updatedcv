@@ -180,6 +180,7 @@ export class ResumeService {
   }
 
   remove(id: number, userId: number) {
+    console.log(id,userId,"im in remove res service")
     return this.resumeRepository.delete({ id, user: { id: userId } });
   }
 

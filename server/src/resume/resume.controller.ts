@@ -35,6 +35,7 @@ export class ResumeController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async findAllByUser(@User('id') userId: number) {
+    console.log(userId, "im in resume fetch")
     return this.resumeService.findAllByUser(userId);
   }
 
@@ -80,6 +81,7 @@ export class ResumeController {
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string, @User('id') userId: number) {
+    console.log(userId,"im in delete res controller")
     return this.resumeService.remove(+id, userId);
   }
 

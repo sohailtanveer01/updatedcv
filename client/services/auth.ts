@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import toast from 'react-hot-toast';
 import { User } from 'schema';
 
-import { logout, setAccessToken, setUser } from '@/store/auth/authSlice';
+import { logout, setAccessToken, setCount, setSubscriber, setUser } from '@/store/auth/authSlice';
 
 import store from '../store';
 import axios from './axios';
@@ -21,8 +21,11 @@ export type RegisterParams = {
   email: string;
   username: string;
   password: string;
+  count:number;
 };
+export type clerk_user = {
 
+}
 export type AuthDTO = {
   user: User;
   accessToken: string;
@@ -38,8 +41,16 @@ export type ResetPasswordParams = {
 };
 
 export type UpdateProfileParams = {
-  name: string;
+  count: number;
 };
+
+export type UpdateSubscriberParams = {
+  isSubscriber: boolean;
+};
+
+// export type updateCountParams = {
+//   count: number;
+// }
 
 export const login = async (loginParams: LoginParams) => {
   const {
@@ -49,6 +60,8 @@ export const login = async (loginParams: LoginParams) => {
   store.dispatch(setUser(user));
   store.dispatch(setAccessToken(accessToken));
 };
+
+
 
 export const loginWithGoogle = async (loginWithGoogleParams: LoginWithGoogleParams) => {
   const {
@@ -88,8 +101,37 @@ export const updateProfile = async (updateProfileParams: UpdateProfileParams) =>
 
   store.dispatch(setUser(user));
 
-  toast.success('Your profile has been successfully updated.');
+  toast.success('You are using your free trial.');
 };
+
+export const updateSubscriberfun = async (updateProfileParams: UpdateSubscriberParams) => {
+
+
+  store.dispatch(setSubscriber(true));
+
+  toast.success('Your payment has been successfully updated.');
+};
+// export const updateCount = async (updatedCount:number) => {
+//   console.log(updatedCount)
+//   const { data: count } = await axios.patch<number, AxiosResponse<number>>(
+//     '/auth/update-count',
+//     {count:updatedCount},
+//   );
+
+  // store.dispatch(setCount(updatedCount));
+  
+  // toast.success('Your profile has been successfully updated.');
+// };
+
+export const stripeFun = async()=>{
+  console.log("im in stripe auth.ts")
+  const {data: url} = await axios.get<any, AxiosResponse<any>>(
+    '/auth/stripe'
+  )
+  console.log(url)
+  window.location.href = url.url;
+}
+
 
 export const deleteAccount = async () => {
   await axios.delete('/resume/all');

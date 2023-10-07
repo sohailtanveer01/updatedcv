@@ -13,6 +13,7 @@ import { UsersService } from '@/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { UpdateCountDto } from './dto/update-count.dto';
 
 @Injectable()
 export class AuthService {
@@ -31,6 +32,8 @@ export class AuthService {
         ...registerDto,
         password,
         provider: 'email',
+        isSubscriber:false,
+        count:0
       });
 
       return createdUser;
@@ -69,9 +72,40 @@ export class AuthService {
     }
   }
 
-  updateProfile(id: number, newData: UpdateProfileDto) {
-    return this.usersService.update(id, { name: newData.name });
+  // updateProfile(id: number, newData: UpdateProfileDto) {
+  //   return this.usersService.update(id, { name: newData.name });
+  // }
+
+  updateCount(id: number, newData: UpdateProfileDto) {
+    // console.log(count)
+    return this.usersService.update(id, { count:newData.count});
   }
+
+  updateSubscriber(id: number){
+     this.usersService.update(id, {isSubscriber: true})
+  }
+
+  //get issubscriber value
+
+  async knowuser(id: number) {
+    try {
+      const user = await this.usersService.findById(id);
+
+
+      return user.isSubscriber;
+    } catch (error) {
+      throw new HttpException(
+        'The username/email and password combination provided was incorrect.',
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
+  }
+
+  stripe(){
+    console.log("im in stripe")
+  }
+
+  
 
   forgotPassword(email: string) {
     return this.usersService.generateResetToken(email);
@@ -100,7 +134,7 @@ export class AuthService {
 
   getAccessToken(id: number) {
     const expiresIn = this.configService.get<number>('auth.jwtExpiryTime');
-
+    console.log("im in get access token service")
     return this.jwtService.sign({ id }, { expiresIn });
   }
 
@@ -141,4 +175,23 @@ export class AuthService {
       return this.usersService.create(createUserDto);
     }
   }
+
+  async authenticateWithClerk(newUserObject: object){
+    try {
+      const user = await this.usersService.findByEmail(newUserObject['email']);
+
+      return user;
+    } catch (error: any) {
+      if (error.status !== HttpStatus.NOT_FOUND) {
+        throw new HttpException(error, HttpStatus.BAD_GATEWAY);
+      }
+      const createUserDto: CreateGoogleUserDto = {
+        name: newUserObject['name'],
+        username: newUserObject['username'],
+        email: newUserObject['email'],
+        provider: 'google'
+      };
+      return this.usersService.create(createUserDto);
+  }
+}
 }

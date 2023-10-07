@@ -10,7 +10,7 @@ import { FontsService } from './fonts.service';
 export class FontsController {
   constructor(private fontsService: FontsService) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   getAll() {
     return this.fontsService.getAll();

@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
+import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsString, Matches, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
@@ -16,6 +16,14 @@ export class CreateUserDto {
   @IsEmail()
   @IsNotEmpty()
   email: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  count:number
+
+  @IsBoolean()
+  @IsNotEmpty()
+  isSubscriber:boolean
 
   @IsString()
   @IsNotEmpty()

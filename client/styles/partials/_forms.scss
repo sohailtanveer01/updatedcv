@@ -1,6 +1,8 @@
 .form-control {
   @apply flex flex-col;
 
+  
+
   span:first-child {
     @apply block cursor-pointer text-[10px] font-semibold uppercase leading-6 tracking-wider;
   }

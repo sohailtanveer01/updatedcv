@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Resume } from '@/resume/entities/resume.entity';
 import { User } from '@/users/entities/user.entity';
+import { Payments } from '@/users/entities/payment.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { User } from '@/users/entities/user.entity';
         database: configService.get('postgres.database'),
         poolSize: 22,
         synchronize: true,
-        entities: [User, Resume],
+        entities: [User, Resume, Payments],
         ssl: configService.get('postgres.certificate') && {
           ca: Buffer.from(configService.get<string>('postgres.certificate'), 'base64').toString('ascii'),
         },

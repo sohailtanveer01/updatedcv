@@ -11,6 +11,11 @@ import { Controller, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useIsMutating, useMutation } from 'react-query';
 
+// import { options } from "../../app/api/auth/[...nextauth]/options"
+import { getServerSession } from "next-auth/next"
+
+
+
 import BaseModal from '@/components/shared/BaseModal';
 import { FLAG_DISABLE_SIGNUPS } from '@/constants/flags';
 import { login, LoginParams, loginWithGoogle, LoginWithGoogleParams } from '@/services/auth';
@@ -34,6 +39,8 @@ const schema = Joi.object({
 });
 
 const LoginModal: React.FC = () => {
+
+ 
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
@@ -109,9 +116,10 @@ const LoginModal: React.FC = () => {
       handleClose={handleClose}
       footerChildren={
         <div className="flex gap-4">
+          {/* {console.log(process.env.POSTGRES_PASSWORD)} */}
           {!isEmpty(env('GOOGLE_CLIENT_ID')) && (
             <GoogleLogin onSuccess={handleLoginWithGoogle} onError={handleGoogleLoginError} />
-          )}
+            )} 
 
           <Button type="submit" onClick={handleSubmit(onSubmit)} disabled={isLoading}>
             {t('modals.auth.login.actions.login')}

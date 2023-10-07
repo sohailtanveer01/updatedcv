@@ -21,6 +21,7 @@ type FormData = {
   username: string;
   email: string;
   password: string;
+  count:number;
   confirmPassword: string;
 };
 
@@ -30,6 +31,7 @@ const defaultState: FormData = {
   email: '',
   password: '',
   confirmPassword: '',
+  count:0
 };
 
 const schema = Joi.object({
@@ -44,6 +46,7 @@ const schema = Joi.object({
     .required(),
   password: Joi.string().min(6).required(),
   confirmPassword: Joi.string().min(6).required().valid(Joi.ref('password')),
+  count:0
 });
 
 const RegisterModal: React.FC = () => {
@@ -69,8 +72,8 @@ const RegisterModal: React.FC = () => {
     reset();
   };
 
-  const onSubmit = async ({ name, username, email, password }: FormData) => {
-    await mutateAsync({ name, username, email, password });
+  const onSubmit = async ({ name, username, email, password, count }: FormData) => {
+    await mutateAsync({ name, username, email, password, count });
     handleClose();
   };
 
