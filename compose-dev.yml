@@ -9,7 +9,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DATABASE=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
@@ -28,7 +28,7 @@ services:
       - PUBLIC_URL=http://localhost:3000
       - PUBLIC_SERVER_URL=http://localhost:3100
       - PUBLIC_GOOGLE_CLIENT_ID=
-      - POSTGRES_DB=postgres
+      - POSTGRES_DATABASE=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - SECRET_KEY=change-me-to-something-secure

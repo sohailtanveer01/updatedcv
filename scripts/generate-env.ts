@@ -6,7 +6,7 @@ const envMap = {
   PUBLIC_URL: '',
   PUBLIC_SERVER_URL: '',
   PUBLIC_GOOGLE_CLIENT_ID: '',
-  POSTGRES_DB: 'postgres',
+  POSTGRES_DATABASE: 'postgres',
   POSTGRES_USER: 'postgres',
   POSTGRES_PASSWORD: 'postgres',
   SECRET_KEY: '',
