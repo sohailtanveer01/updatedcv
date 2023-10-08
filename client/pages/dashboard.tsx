@@ -76,6 +76,7 @@ const Dashboard: NextPage = () => {
 
   const count: any = useAppSelector(((state) => state.auth.user))
   const updatedCount: number = count.count;
+  const isSubscriberredux = useAppSelector((state)=>state.auth.user?.isSubscriber)
 
   const handleupgradeClick = () => {
     setIsProModalOpen(true) // Set openPro to true when Upgrade is clicked
@@ -96,12 +97,13 @@ const Dashboard: NextPage = () => {
     const id: number = user.id
     const apiUrl: string = process.env.NEXT_PUBLIC_API_URL!;
 
-    const checkURL = `${apiUrl}/auth/knowcustomer`;
+    const checkURL = 'api/auth/knowcustomer';
     const isSubscriber: any = await axios.post(checkURL, { id })
     //  const tokenresstr = String(tokenres.data)
     //  console.log(tokenresstr)
     // console.log("im in dashbord",isSubscriber.data)
     store.dispatch(setSubscriber(isSubscriber.data));
+
   }
   if (!data) return null;
 
@@ -115,9 +117,35 @@ const Dashboard: NextPage = () => {
       </Head>
 
       <header>
+        <div className='flex gap-10'>
         <Link href="/">
           <Logo size={256} />
         </Link>
+        {!isSubscriberredux &&(
+             <div>
+             {/* <Card className="bg-white/10 border-0">
+               <CardContent className='py-3'>
+                 <div className="text-center text-sm text-white mb-4 space-y-2">
+                   <p>
+                     {5 - Math.min(updatedCount ?? 0, 5)}  Free Updations left
+                   </p>
+   
+                   <div className="bg-gray-300 h-3 rounded-full">
+                     <div
+                       className="bg-red-400 h-3 rounded-full"
+                       style={{ width: updatedCount ? `${Math.min(updatedCount, 5) * 42}px` : '0' }}
+                     ></div>
+                   </div>
+                 </div> */}
+   
+                 <Buttonpre className="w-full" variant="premium" onClick={handleupgradeClick}>
+                   Upgrade To Pro
+                 </Buttonpre>
+               {/* </CardContent> */}
+              {/* </Card> */}
+           </div>
+      )}
+      </div>
 
         {/* <Avatar size={40} /> */}
         <UserButton afterSignOutUrl="/" />
@@ -147,12 +175,11 @@ const Dashboard: NextPage = () => {
         {data.map((resume) => (
           <ResumePreview key={resume.id} resume={resume} />
         ))}
-        {hasSessionId && (
+        {/* {hasSessionId && (
           <div>
             <p className='text-gray-500'>Session ID: {router.query?.sessionid} your payment has been successful</p>
-            {/* Additional UI elements related to sessionid */}
           </div>
-        )}
+        )} */}
 
 
      
@@ -197,29 +224,8 @@ const Dashboard: NextPage = () => {
           </DialogContent>
         </Dialog>
 
-
-        <div className='py-6'>
-          <Card className="bg-white/10 border-0">
-            <CardContent className='py-3'>
-              <div className="text-center text-sm text-white mb-4 space-y-2">
-                <p>
-                  {5 - Math.min(updatedCount ?? 0, 5)}  Free Updations left
-                </p>
-
-                <div className="bg-gray-300 h-3 rounded-full">
-                  <div
-                    className="bg-red-400 h-3 rounded-full"
-                    style={{ width: updatedCount ? `${Math.min(updatedCount, 5) * 42}px` : '0' }}
-                  ></div>
-                </div>
-              </div>
-
-              <Buttonpre className="w-full" variant="premium" onClick={handleupgradeClick}>
-                Upgrade To Pro
-              </Buttonpre>
-            </CardContent>
-          </Card>
-        </div>
+        
+     
       </main>
   
     </div>

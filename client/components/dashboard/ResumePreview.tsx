@@ -62,7 +62,7 @@ const ResumePreview: React.FC<Props> = ({ resume }) => {
   const [loading, setLoading] = useState(false);
 
   const { mutateAsync: deleteMutation } = useMutation<void, ServerError, DeleteResumeParams>(deleteResume);
-  const isSubscriber = useAppSelector((state) => state.auth.user?.isSubscriber)
+  const isSubscriber:any = useAppSelector((state) => state.auth.user?.isSubscriber)
 
   const count: any = useAppSelector(((state) => state.auth.user))
   const handleOpen = () => {
