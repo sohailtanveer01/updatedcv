@@ -102,6 +102,7 @@ const Home: NextPage = () => {
         }= await axios.post(loginUrl,newUserObject)
       //  const tokenresstr = String(tokenres.data)
       //  console.log(tokenresstr)
+      console.log(user,accessToken)
       store.dispatch(setUser(user));
       store.dispatch(setAccessToken(accessToken))
       }
