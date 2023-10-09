@@ -1,3 +1,10 @@
+// instead of typeorm i want to use supabase
+// import { Injectable } from '@nestjs/common';
+// import { SupabaseService } from '@nestjsplus/supabase';
+// import { User } from './entities/user.entity';
+// import { UpdateCountDto } from '@/auth/dto/update-count.dto';
+//      
+
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
