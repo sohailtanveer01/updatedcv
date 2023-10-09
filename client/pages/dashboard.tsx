@@ -74,8 +74,8 @@ const Dashboard: NextPage = () => {
   const router = useRouter();
   const hasSessionId = router.query?.session_id !== undefined;
 
-  const count: any = useAppSelector(((state) => state.auth.user))
-  const updatedCount: number = count.count;
+  // const count: any = useAppSelector(((state) => state.auth.user))
+  // const updatedCount: number = count.count;
   const isSubscriberredux = useAppSelector((state)=>state.auth.user?.isSubscriber)
 
   const handleupgradeClick = () => {
