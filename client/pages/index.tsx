@@ -161,12 +161,15 @@ const Home: NextPage = () => {
                      <Button variant="outlined" onClick={handleLogout}>
                        {t('landing.actions.logout')}
                      </Button> */}
-                     <div className='flex w-max justify-between gap-20'>
-                     <Link href="/dashboard" passHref>
-                      <Button>Go To App</Button>
-                    </Link>
-                    <UserButton afterSignOutUrl="/" />
-                     </div>
+                     {isSubscriber===true &&(
+                        <div className='flex w-max justify-between gap-20'>
+                        <Link href="/dashboard" passHref>
+                         <Button>Go To App</Button>
+                       </Link>
+                       <UserButton afterSignOutUrl="/" />
+                        </div>
+                     )}
+                     
                
 
                   </>
