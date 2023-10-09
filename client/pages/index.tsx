@@ -165,7 +165,7 @@ const Home: NextPage = () => {
                      <div className='flex w-max justify-between gap-20'>
                      <Link href="/dashboard" passHref>
                       <Button>Go To App</Button>
-                      <p>{existing}</p>
+                      {/* <p>{existing}</p> */}
                     </Link>
                     <UserButton afterSignOutUrl="/" />
                      </div>

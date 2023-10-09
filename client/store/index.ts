@@ -24,7 +24,7 @@ const persistedReducers = persistReducer({ key: 'root', storage, whitelist: ['au
 
 const store = configureStore({
   reducer: persistedReducers,
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV !== 'development',
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: {
