@@ -18,8 +18,8 @@ const validationSchema = Joi.object({
   NODE_ENV: Joi.string().valid('development', 'production').default('production'),
 
   // URLs
-  PUBLIC_URL: Joi.string().default('http://localhost:3000'),
-  PUBLIC_SERVER_URL: Joi.string().default('http://localhost:3100'),
+  PUBLIC_URL: Joi.string(),
+  PUBLIC_SERVER_URL: Joi.string(),
 
   // Database
   POSTGRES_HOST: Joi.string().required(),
