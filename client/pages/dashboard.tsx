@@ -95,7 +95,7 @@ const Dashboard: NextPage = () => {
   }, []);
   const checkuser = async () => {
     const id: number = user.id
-    const apiUrl: string = process.env.NEXT_PUBLIC_API_URL!;
+    const apiUrl: string = process.env.PUBLIC_SERVER_URL!;
 
     const checkURL = 'api/auth/knowcustomer';
     const isSubscriber: any = await axios.post(checkURL, { id })
