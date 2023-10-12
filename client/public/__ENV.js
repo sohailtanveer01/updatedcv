@@ -1,1 +1,0 @@
-window.__ENV = {"PUBLIC_URL":"http://localhost:3000","PUBLIC_GOOGLE_CLIENT_ID":"644053299262-sahbprql0fu77cr32i3ns9ikupk6p8nf.apps.googleusercontent.com","PUBLIC_FLAG_DISABLE_SIGNUPS":"false","PUBLIC_SERVER_URL":"http://localhost:3100","REACT_ENV_PREFIX":"PUBLIC"};
