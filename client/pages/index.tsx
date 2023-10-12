@@ -94,9 +94,9 @@ const Home: NextPage = () => {
         // updatedAt: '2023-09-17 13:47:39.241453'
       };
       const loginclerk = async()=>{
-        // const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
+        const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
 
-        const loginUrl = '/auth/clerklogin';
+        const loginUrl = `${apiUrl}/auth/clerklogin`;
         const {
           data: { user, accessToken },
         }= await axios.post(loginUrl,newUserObject)
