@@ -95,7 +95,7 @@ const Home: NextPage = () => {
       const loginclerk = async()=>{
         // const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
 
-        const loginUrl = 'https://updatedcv-client.vercel.app/auth/clerklogin';
+        const loginUrl = '/auth/clerklogin';
         const {
           data: { user, accessToken },
         }= await axios.post(loginUrl,newUserObject)

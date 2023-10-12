@@ -87,6 +87,13 @@ async clerklogin(@Body() newUserObject: object){
   }
 }
 
+
+
+
+
+
+
+
 //payment done from stripe
 @HttpCode(200)
 @Post('payment_done_stripe')
