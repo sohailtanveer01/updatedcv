@@ -43,10 +43,10 @@ const main = async () => {
     envMap['PUBLIC_URL'] = `https://3000-${baseUrl}`;
   }
   // Otherwise, fallback to localhost
-  // else {
-  //   envMap['PUBLIC_SERVER_URL'] = 'https://localhost:3100';
-  //   envMap['PUBLIC_URL'] = 'https://localhost:3000';
-  // }
+  else {
+    envMap['PUBLIC_SERVER_URL'] = 'https://localhost:3100';
+    envMap['PUBLIC_URL'] = 'https://localhost:3000';
+  }
 
   // Secret Key
   envMap['SECRET_KEY'] = randomBytes(20).toString('hex');

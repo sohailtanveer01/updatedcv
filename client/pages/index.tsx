@@ -1,3 +1,4 @@
+"use client"
 
 import { DarkMode, LightMode, Link as LinkIcon } from '@mui/icons-material';
 import { Masonry } from '@mui/lab';
