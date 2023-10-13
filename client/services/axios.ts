@@ -14,7 +14,7 @@ export type ServerError = {
   statusCode: number;
 };
 
-const baseURL = env('SERVER_URL') || '/api';
+const baseURL = process.env.SERVER_URL || '';
 const axios = _axios.create({ baseURL });
 
 axios.interceptors.request.use((config) => {
