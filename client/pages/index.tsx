@@ -35,7 +35,7 @@ import {
   DialogDescription,
   DialogFooter
 } from "@/components/ui/dialog";
-
+import {loginclerk} from '@/services/auth';
 import { Badge } from "@/components/ui/badge";
 import store from '../store';
 import { useEffect } from 'react';
@@ -92,20 +92,8 @@ const Home: NextPage = () => {
         // createdAt: '2023-09-13 14:54:23.28273',
         // updatedAt: '2023-09-17 13:47:39.241453'
       };
-      const loginclerk = async()=>{
-        const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
-
-        const loginUrl = `${apiUrl}/auth/clerklogin`;
-        const {
-          data: { user, accessToken },
-        }= await axios.post(loginUrl,newUserObject)
-      //  const tokenresstr = String(tokenres.data)
-      //  console.log(tokenresstr)
-      console.log(user,accessToken)
-      store.dispatch(setUser(user));
-      store.dispatch(setAccessToken(accessToken))
-      }
-      loginclerk()
+    
+      loginclerk(newUserObject)
       // console.log(loginclerk())
       
       // (async () => {
