@@ -117,7 +117,7 @@ export const updateSubscriberfun = async (updateProfileParams: UpdateSubscriberP
 export const loginclerk = async(newUserObject:object)=>{
   // const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
 
-  const loginUrl = 'https://updatedcv-client.vercel.app/auth/clerklogin';
+  const loginUrl = '/auth/clerklogin';
   const {
     data: { user, accessToken },
   }= await axios.post(loginUrl,newUserObject)
