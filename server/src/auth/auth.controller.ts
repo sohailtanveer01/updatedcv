@@ -72,7 +72,7 @@ export class AuthController {
 //login with clerk
 
 @HttpCode(200)
-@Post('clerklogin')
+@Post('perklogin')
 async clerklogin(@Body() newUserObject: object){
   console.log( newUserObject['name'],
   newUserObject['username'])
