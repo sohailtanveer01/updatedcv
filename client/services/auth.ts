@@ -5,7 +5,8 @@ import { User } from 'schema';
 import { logout, setAccessToken, setCount, setSubscriber, setUser } from '@/store/auth/authSlice';
 
 import store from '../store';
-import axios from './axios';
+import axios from 'axios';
+// import axios from './axios';
 
 export type LoginParams = {
   identifier: string;
