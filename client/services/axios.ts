@@ -14,7 +14,8 @@ export type ServerError = {
   statusCode: number;
 };
 
-const baseURL = env('PUBLIC_SERVER_URL') || '/api';
+// const baseURL = env('PUBLIC_SERVER_URL') || '/api';
+const baseURL = 'https://updatedcv-client.vercel.app'
 const axios = _axios.create({ baseURL });
 
 axios.interceptors.request.use((config) => {
