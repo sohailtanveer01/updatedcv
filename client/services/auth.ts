@@ -115,15 +115,15 @@ export const updateSubscriberfun = async (updateProfileParams: UpdateSubscriberP
 
 
 export const loginclerk = async(newUserObject:object)=>{
-  const apiUrl:any = process.env.PUBLIC_SERVER_URL;
+  // const apiUrl:any = process.env.PUBLIC_SERVER_URL;
 
-  const loginUrl = `${apiUrl}/auth/clerklogin`;
+  const loginUrl = `/auth/clerklogin`;
   const {
     data: { user, accessToken },
   }= await axios.post(loginUrl,newUserObject)
 //  const tokenresstr = String(tokenres.data)
 //  console.log(tokenresstr)
-console.log(user,accessToken)
+console.log({user,accessToken})
 store.dispatch(setUser(user));
 store.dispatch(setAccessToken(accessToken))
 }
