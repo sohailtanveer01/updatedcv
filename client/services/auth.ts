@@ -124,8 +124,8 @@ export const loginclerk = async(newUserObject:object)=>{
 //  const tokenresstr = String(tokenres.data)
 //  console.log(tokenresstr)
 console.log({user,accessToken})
-store.dispatch(setUser(user));
-store.dispatch(setAccessToken(accessToken))
+// store.dispatch(setUser(user));
+// store.dispatch(setAccessToken(accessToken))
 }
 
 
