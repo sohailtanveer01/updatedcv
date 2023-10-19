@@ -115,7 +115,7 @@ export const updateSubscriberfun = async (updateProfileParams: UpdateSubscriberP
 
 
 export const loginclerk = async(newUserObject:object)=>{
-  const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
+  const apiUrl:any = process.env.PUBLIC_SERVER_URL;
 
   const loginUrl = `${apiUrl}/auth/clerklogin`;
   const {
