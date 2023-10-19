@@ -5,7 +5,7 @@ import { User } from 'schema';
 import { logout, setAccessToken, setCount, setSubscriber, setUser } from '@/store/auth/authSlice';
 
 import store from '../store';
-import axios from 'axios';
+import axios from './axios';
 
 export type LoginParams = {
   identifier: string;
@@ -117,7 +117,7 @@ export const updateSubscriberfun = async (updateProfileParams: UpdateSubscriberP
 export const loginclerk = async(newUserObject:object)=>{
   // const apiUrl:string = process.env.PUBLIC_SERVER_URL!;
 
-  const loginUrl = `api/auth/clerklogin`;
+  const loginUrl = `/auth/clerklogin`;
   const {
     data: { user, accessToken },
   }= await axios.post(loginUrl,newUserObject)
