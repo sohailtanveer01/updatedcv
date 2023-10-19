@@ -78,10 +78,10 @@ async clerklogin(@Body() newUserObject: object){
   newUserObject['username'])
 
   try {
-    const user = await this.authService.authenticateWithClerk(newUserObject);
-    const accessToken = this.authService.getAccessToken(user.id);
-    // const accessToken = 'this is accessToken'
-    
+    // const user = await this.authService.authenticateWithClerk(newUserObject);
+    // const accessToken =  this.authService.getAccessToken(user.id);
+    const accessToken = 'this is accessToken'
+    const user = newUserObject
     return { user,accessToken };
   } catch (error) {
     throw new BadRequestException('User with this email might already exist.');
