@@ -14,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   server:
-    image: amruthpillai/reactive-resume:server-latest
+    image: sohailtanveer/serverimg:latest
     restart: always
     ports:
       - 3100:3100
@@ -50,7 +50,8 @@ services:
       - PDF_DELETION_TIME=
 
   client:
-    image: amruthpillai/reactive-resume:client-latest
+    image: sohailtanveer/clientimg:latest
+
     restart: always
     ports:
       - 3000:3000
