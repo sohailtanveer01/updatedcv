@@ -17,6 +17,7 @@
     "server"
   ],
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.12.16",
     "@clerk/nextjs": "^4.24.1",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-progress": "^1.0.3",

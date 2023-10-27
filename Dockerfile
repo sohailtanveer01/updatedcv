@@ -29,7 +29,8 @@ ENV POSTGRES_SSL_CERT=
 ENV POSTGRES_DATABASE=postgres
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=sS3DZUqOHzBLjz0T
-ENV RUN pnpm exec turbo --filter server build
+
+RUN pnpm exec turbo --filter server build
 
 FROM mcr.microsoft.com/playwright:v1.38.1-focal as production
 
